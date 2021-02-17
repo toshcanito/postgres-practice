@@ -2,8 +2,7 @@ import React from "react";
 
 const List = () => {
     return (
-        <div className="container col-md-12">
-            <div className="list-group text-center">
+        <div className="list-group text-center">
             <table className="table table-hover table-dark">
                 <thead>
 
@@ -18,7 +17,6 @@ const List = () => {
                     </tr>
                 </tbody>
             </table>
-        </div>
         </div>
     );
 }

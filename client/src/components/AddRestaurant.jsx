@@ -3,7 +3,7 @@ import React from "react";
 const AddRestaurant = () => {
     return (
         <React.Fragment>
-            <div className="container text-center mb-4">
+            <div className="mb-4">
                 <form action="">
                     <div className="row">
                         <div className="col-md-3">

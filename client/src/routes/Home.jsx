@@ -5,7 +5,7 @@ import List from "../components/List";
 
 const Home = () => {
     return (
-        <div>
+        <div className="container">
             <Header />
             <AddRestaurant />
             <List />
