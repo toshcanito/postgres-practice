@@ -14,7 +14,7 @@ const AddRestaurant = () => {
                         </div>
                         <div className="col-md-3">
                             <select className="form-control custom-select">
-                                <option disabled selected>price range</option>
+                                <option disabled>price range</option>
                                 <option value="1">$</option>
                                 <option value="2">$$</option>
                                 <option value="3">$$$</option>
@@ -23,7 +23,7 @@ const AddRestaurant = () => {
                             </select>
                         </div>
                         <div className="col-md-2">
-                            <button type="submit" class="btn btn-primary btn">Add restaurant</button>
+                            <button type="submit" className="btn btn-primary btn">Add restaurant</button>
                         </div>
                     </div>
                 </form>
