@@ -2,6 +2,7 @@ require('dotenv').config({ path: './.env' });
 const express = require('express');
 const morgan = require('morgan');
 const db = require('./db/postgres.js');
+const cors = require('cors');
 
 //Enviroment variables
 const port = process.env.PORT;
@@ -12,6 +13,7 @@ const app = express();
 
 //Express middleware
 app.use(morgan('tiny'));
+app.use(cors());
 app.use(express.json());
 
 //Route handdlers
