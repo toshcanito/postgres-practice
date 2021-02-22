@@ -26,7 +26,8 @@ const List = () => {
                     </tr>
                 </thead>
                 <tbody>
-                    {restaurants.map((restaurant) => {
+                    {/* if restaurants not null or undefined it will draw the rows */}
+                    {restaurants && restaurants.map((restaurant) => {
                         return (<tr key={restaurant.id}>
                             <td>{restaurant.name}</td>
                             <td>{restaurant.location}</td>
@@ -34,8 +35,8 @@ const List = () => {
                             <td>derp</td>
                             <td>
                                 <div className="float-right">
-                                    <button className="btn btn-warning mx-1">Update</button>
-                                    <button className="btn btn-danger">Delete</button>
+                                    <button className="btn btn-warning">Update</button>
+                                    <button className="btn btn-danger mx-1">Delete</button>
                                 </div>
                             </td>
                         </tr>
