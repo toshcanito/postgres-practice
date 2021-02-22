@@ -4,8 +4,11 @@ export const RestaurantsContext = React.createContext();
 export const RestaurantsContextProvider = (props) => {
 
     const [restaurants, setRestaurants] = useState([]);
+    const addRestaurant = (restaurant) => {
+        setRestaurants([...restaurants, restaurant]);
+    }
     return (
-        <RestaurantsContext.Provider value={{restaurants, setRestaurants}}>
+        <RestaurantsContext.Provider value={{ restaurants, setRestaurants, addRestaurant }}>
             {props.children}
         </RestaurantsContext.Provider>
     );
