@@ -12,7 +12,7 @@ const App = () => {
                 <Switch>
                     <Route exact path="/" component={Home} />
                     <Route exact path="/restaurants/:id" component={RestaurantDetail} />
-                    <Route exact path="/restaurants/:id/update" component={UpdateRestaurant} />
+                    {/* <Route exact path="/restaurants/:id/update" component={UpdateRestaurant} /> */}
                 </Switch>
             </Router>
         </RestaurantsContextProvider>
