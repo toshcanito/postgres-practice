@@ -34,7 +34,7 @@ const List = () => {
     return (
         <React.Fragment>
             <UpdateRestaurant
-                restaurant={[selectedRestaurant]}
+                restaurant={selectedRestaurant}
                 handleTogleModal={() => { handleTogleModal() }}
                 isOpen={togleModal}
             />

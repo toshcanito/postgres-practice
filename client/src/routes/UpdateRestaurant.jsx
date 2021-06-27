@@ -1,4 +1,5 @@
 import React, { useState, useContext } from "react";
+import ReactDom from "react-dom";
 import RestaurantFinder from "../apis/RestaurantFinder";
 
 const Modal_Style = {
@@ -22,7 +23,7 @@ const Overlay_Style = {
 }
 
 const UpdateRestaurant = ({ restaurant, handleTogleModal, isOpen }) => {
-    const [name, setName] = useState("");
+    const [name, setName] = useState(restaurant.name ? restaurant.name : "");
     const [location, setLocation] = useState("");
     const [price_range, setPriceRange] = useState("");
 
@@ -40,47 +41,43 @@ const UpdateRestaurant = ({ restaurant, handleTogleModal, isOpen }) => {
         }
     }
 
-    return (
+    return ReactDom.createPortal(
         <React.Fragment>
-            <div style={Overlay_Style}></div>
+            <div style={Overlay_Style} />
             <div style={Modal_Style}>{
-                restaurant.map((r) => {
-                    return (
-                        <form className="mb-4">
-                            <h1 className="mb-3">Update restaurant</h1>
-                            <div className="form-group mb-3">
-                                <label className="form-label">Name</label>
-                                <input type="text" className="form-control" value={r.name}
-                                    onChange={(e) => { setName(e.target.value) }} onClick={()=>{console.log(this)}} ></input>
-                            </div>
-                            <div className="form-group mb-3">
-                                <label className="form-label">Location</label>
-                                <input type="text" className="form-control" value={r.location}
-                                    onChange={(e) => { setLocation(e.target.value); }}></input>
-                            </div>
-                            <div className="form-group mb-3">
-                                <label className="form-label">Price range</label>
-                                <select className="form-control custom-select"
-                                    value={r.price_range} onChange={(e) => { setPriceRange(e.target.value) }}>
-                                    <option disabled>price range</option>
-                                    <option value="1">$</option>
-                                    <option value="2">$$</option>
-                                    <option value="3">$$$</option>
-                                    <option value="4">$$$$</option>
-                                    <option value="5">$$$$$</option>
-                                </select>
-                            </div>
-                            <div className="align-items-end">
-                                <button className="btn btn-secondary float-right" onClick={() => { handleTogleModal() }}>Cancel</button>
-                                <button type="submit" className="btn btn-primary mx-2" onClick={handleUpdate} >Update</button>
-                            </div>
-                        </form>
-                    );
-                })
+                <form className="mb-4">
+                    <h1 className="mb-3">Update restaurant</h1>
+                    <div className="form-group mb-3">
+                        <label className="form-label">Name</label>
+                        <input type="text" value={name} onChange={(e) => { console.log(name); setName(e.target.value); }}
+                            className="form-control" />
+                    </div>
+                    <div className="form-group mb-3">
+                        <label className="form-label">Location</label>
+                        <input type="text" className="form-control" value={location}
+                            onChange={(e) => { setLocation(e.target.value); }}></input>
+                    </div>
+                    <div className="form-group mb-3">
+                        <label className="form-label">Price range</label>
+                        <select className="form-control custom-select"
+                            value={price_range} onChange={(e) => { setPriceRange(e.target.value) }}>
+                            <option disabled>price range</option>
+                            <option value="1">$</option>
+                            <option value="2">$$</option>
+                            <option value="3">$$$</option>
+                            <option value="4">$$$$</option>
+                            <option value="5">$$$$$</option>
+                        </select>
+                    </div>
+                    <div className="align-items-end">
+                        <button className="btn btn-secondary float-right" onClick={() => { handleTogleModal() }}>Cancel</button>
+                        <button type="submit" className="btn btn-primary mx-2" onClick={handleUpdate} >Update</button>
+                    </div>
+                </form>
             }
             </div>
-        </React.Fragment>
-    );
+        </React.Fragment>,
+        document.getElementById('modal'));
 }
 
 export default UpdateRestaurant;
